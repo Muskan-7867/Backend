@@ -1,3 +1,5 @@
+// express js manages eveything from receiving the request and giving  the response
+
 const express =  require("express")
 const app = express();
 
@@ -10,3 +12,4 @@ app.get("/profile",function(req,res){
 })
 
 app.listen(3000)
+
