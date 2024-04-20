@@ -16,3 +16,6 @@ app.get("/",function(req,res){
 
 
 app.listen(3000)
+
+// hum kuj bhi data  frontend browser pr rkh skte hai (called cookie) and jab bhi hum  backend me request krte hai toh
+// frontend me saved data  automatically backend me chla jayega
