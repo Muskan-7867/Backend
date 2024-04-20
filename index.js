@@ -13,4 +13,8 @@ app.get("/",function(req,res) {
     res.render("index")
 })
 
+app.get("/profile/:username/:age",function(req,res) {
+    res.send(`welcome,${req.params.username} of age ${req.params.age}`)
+})
+
 app.listen(3000)
