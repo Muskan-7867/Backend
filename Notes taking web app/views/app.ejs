@@ -17,20 +17,33 @@
 
     </div>
     <div class="tasks flex flex-wrap gap-4 p-10">
-        <div class="task w-72 bg-zinc-800 px-3 py-4 rounded-md">
-            <h1 class="text-white text-3xl tracking-tighter">Some task goes here..</h1>
-         <a class="text-blue-600 inline-block mt-3" href="">Read More..</a>
-        </div>
+        <% if(files.length >0) { %>
+            <% files.forEach(function(val){ %>
+ 
+                <div class="task w-72  bg-zinc-800 px-3 py-4 rounded-md">
+                    <h1 class="text-white text-3xl tracking-tighter">Some task goes here..</h1>
+                 <a class="text-blue-600 inline-block mt-3" href="">Read More..</a>
+                </div>
+        
+                <!-- <div class="task w-72 hidden bg-zinc-800 px-3 py-4 rounded-md">
+                    <h1 class="text-white text-3xl tracking-tighter">Some task goes here..</h1>
+                 <a class="text-blue-600 inline-block mt-3" href="">Read More..</a>
+                </div>
+        
+                <div class="task w-72 hidden bg-zinc-800 px-3 py-4 rounded-md">
+                    <h1 class="text-white text-3xl tracking-tighter">Some task goes here..</h1>
+                 <a class="text-blue-600 inline-block mt-3" href="">Read More..</a>
+                </div> -->
 
-        <div class="task w-72 bg-zinc-800 px-3 py-4 rounded-md">
-            <h1 class="text-white text-3xl tracking-tighter">Some task goes here..</h1>
-         <a class="text-blue-600 inline-block mt-3" href="">Read More..</a>
-        </div>
+            <% }) %>
 
-        <div class="task w-72 bg-zinc-800 px-3 py-4 rounded-md">
-            <h1 class="text-white text-3xl tracking-tighter">Some task goes here..</h1>
-         <a class="text-blue-600 inline-block mt-3" href="">Read More..</a>
-        </div>
+            <% } else { %>
+
+                <h3 class="text-white">No tasks</h3>
+            <%  }  %>
+
+       
+        
     </div>
    </div>
 </body>
