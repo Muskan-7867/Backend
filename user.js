@@ -8,9 +8,9 @@ app.get('/', (req,res)=> {
 
 app.get('/create', async  (req,res) => {
     let User = await userModel.create({
-        name: "muskan",
-        username: "musu",
-        email: "musu@gmail.com",
+        name: "depk",
+        username: "musudepk",
+        email: "musudepk@gmail.com",
 })
 
      res.send(User);
@@ -22,5 +22,10 @@ let updateduser = await userModel.findOneAndUpdate({username:"musu"}, {name:"plk
 res.send(updateduser)
 })
 
+
+app.get('/read', async  (req,res) => {
+    let readuser = await userModel.find({username:"musu"});
+    res.send(readuser);
+})
 
 app.listen(3000);
