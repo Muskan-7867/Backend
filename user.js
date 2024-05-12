@@ -1,36 +1,41 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const userModel = require('./usermodel')
+const path = require('path');
+const userModel = require("./Model/User");
 
-app.get('/', (req,res)=> {
-    res.send("hey")
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
+app.set("view engine", 'ejs');
 
-app.get('/create', async  (req,res) => {
-    let User = await userModel.create({
-        name: "depk",
-        username: "musudepk",
-        email: "musudepk@gmail.com",
-})
+app.get("/", (req, res) => {
+    res.render("app");
+});
 
-     res.send(User);
+app.get("/read", async (req, res) => {
+    // let allusers = await userModel.find()
+    res.render("read");
+});
 
-})
+app.post("/create", async (req, res) => {
+    try {
+        const { name, email, image } = req.body;
+        console.log("body data1",name,email,image);
+        const newUser = new userModel({
+            name: name,
+            email: email,
+            image: image
+        });
 
-app.get('/update', async  (req,res) => {
-let updateduser = await userModel.findOneAndUpdate({username:"musu"}, {name:"plkk"},{new:true})
-res.send(updateduser)
-})
+        const createdUser = await newUser.save()
+        console.log("User created:", createdUser);
+        res.send(createdUser);
+    } catch (error) {
+        console.error("Error creating user:", error);
+        res.status(500).send("Error creating user");
+    }
+});
 
-
-app.get('/read', async  (req,res) => {
-    let readuser = await userModel.find({username:"musu"});
-    res.send(readuser);
-})
-
-app.get('/delete', async  (req,res) => {
-    let deleteduser = await userModel.findOneAndDelete({username:"musu"})
-    res.send(deleteduser)
-    })
-
-app.listen(3000);
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});

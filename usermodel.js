@@ -11,9 +11,9 @@ const mongoose =  require('mongoose');
 mongoose.connect(`mongodb://localhost:27017`)
 //schem means user ke pass kya kya details hongi 
  const userSchema = mongoose.Schema({
-name: String,
-username: String,
-email: String,
+Name: String,
+Username: String,
+Email: String,
  })
  //on the basis of module we use crud opration
  module.exports = mongoose.model('user',userSchema) 
